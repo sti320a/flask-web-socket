@@ -23,7 +23,7 @@ if __name__ == "__main__":
     app.debug = True
 
     host = 'localhost'
-    port = 8080
+    port = 5000
     host_port = (host, port)
 
     server = WSGIServer(
