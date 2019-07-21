@@ -18,13 +18,11 @@ def pipe():
         print('Connected')
 
         while True:
-            try:
-                msg = input('>')
-                if msg == 'exit': sys.exit()
-                ws.send(msg)
-            except KeyboardInterrupt:
-                print('Closed')
+            msg = input('>')
+            if msg == 'exit':
                 sys.exit()
+                print('Closed')
+            ws.send(msg)
 
 
 if __name__ == "__main__":
