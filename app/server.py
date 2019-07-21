@@ -1,6 +1,4 @@
 from flask import Flask, request, render_template
-from gevent.pywsgi import WSGIServer 
-from geventwebsocket.handler import WebSocketHandler
 import sys
 
 app = Flask(__name__)
@@ -23,19 +21,4 @@ def pipe():
                 print('Closed')
                 sys.exit()
             ws.send(msg)
-
-
-if __name__ == "__main__":
-    app.debug = True
-
-    host = 'localhost'
-    port = 5000
-    host_port = (host, port)
-
-    server = WSGIServer(
-        host_port,
-        app,
-        handler_class=WebSocketHandler
-    )
-    server.serve_forever()
 
