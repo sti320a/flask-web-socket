@@ -18,7 +18,7 @@ def pipe():
         print('Connected')
 
         while True:
-            msg = input('>')
+            msg = input('> ')
             if msg == 'exit':
                 print('Closed')
                 sys.exit()
