@@ -20,8 +20,8 @@ def pipe():
         while True:
             msg = input('>')
             if msg == 'exit':
-                sys.exit()
                 print('Closed')
+                sys.exit()
             ws.send(msg)
 
 
