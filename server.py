@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template
 from gevent.pywsgi import WSGIServer 
 from geventwebsocket.handler import WebSocketHandler
+import sys
 
 app = Flask(__name__)
 
@@ -14,9 +15,16 @@ def index():
 def pipe():
     if request.environ.get('wsgi.websocket'):
         ws = request.environ['wsgi.websocket']
+        print('Connected')
 
         while True:
-            ws.send(input())
+            try:
+                msg = input('>')
+                if msg == 'exit': sys.exit()
+                ws.send(msg)
+            except KeyboardInterrupt:
+                print('Closed')
+                sys.exit()
 
 
 if __name__ == "__main__":
